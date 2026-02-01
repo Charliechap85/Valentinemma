@@ -13,9 +13,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
         .container {
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
         .button {
             background-color: #ff6b81;
@@ -31,25 +34,46 @@
         .button:hover {
             background-color: #ff4b66;
         }
+        .fireworks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Emma Nadia Kadure, will you be my Valentine? 💖</h1>
+        <h1>Emma Nadia Kathure, will you be my Valentine? 💖</h1>
         <button id="yesButton" class="button">Yes! 💌</button>
         <button id="noButton" class="button">No! 💔</button>
+        <div id="fireworks" class="fireworks">
+            <!-- Heart emojis will appear here -->
+        </div>
+        <img id="valentineImage" src="" alt="Valentine Image" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; max-width: 80%; border: 5px solid white;">
     </div>
 
     <script>
+        const yesButton = document.getElementById('yesButton');
         const noButton = document.getElementById('noButton');
+        const fireworks = document.getElementById('fireworks');
+        const valentineImage = document.getElementById('valentineImage');
 
-        noButton.addEventListener('mouseover', function() {
-            const x = Math.random() * (window.innerWidth - noButton.clientWidth);
-            const y = Math.random() * (window.innerHeight - noButton.clientHeight);
-            noButton.style.position = 'absolute';
-            noButton.style.left = x + 'px';
-            noButton.style.top = y + 'px';
-        });
-    </script>
-</body>
-</html>
+        yesButton.addEventListener('click', function() {
+            // Show fireworks
+            fireworks.innerHTML = '';
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+                heart.style.transition = `all ${Math.random() * 2 + 1}s ease`;
+                fireworks.appendChild(heart);
+                setTimeout(() => {
+                    heart.style.left = Math.
+
+   
